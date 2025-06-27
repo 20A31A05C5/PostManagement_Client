@@ -13,7 +13,7 @@ function Login() {
     setData({...data,[e.target.name]:e.target.value})
   }
   let login=()=>{
-    axios.post("http://localhost:5000/login",data).then((res)=>{
+    axios.post(`${process.env.REACT_APP_API_URL}/login`,data).then((res)=>{
       if(res.data.token!==undefined){
         Cookies.set("lgc",JSON.stringify(res.data),{"expires":2})
         obj.updStore(res.data)

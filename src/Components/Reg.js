@@ -8,7 +8,7 @@ function Reg() {
     setData({...data,[e.target.name]:e.target.value})
   }
   let reg=()=>{
-    axios.post("http://localhost:5000/reg",data).then((res)=>{
+    axios.post(`${process.env.REACT_APP_API_URL}/reg`,data).then((res)=>{
       setMsg(res.data.msg)
     })
   }

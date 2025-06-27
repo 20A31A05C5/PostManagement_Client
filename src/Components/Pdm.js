@@ -20,7 +20,7 @@ function Pdm() {
 
       obj.updStore(x);
     }
-    axios.get(`http://localhost:5000/pdm/${obj.store.uid}`).then((res) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/pdm/${obj.store.uid}`).then((res) => {
       setData(res.data);
     });
   }, [f]);
@@ -28,7 +28,7 @@ function Pdm() {
     navigate(`/edit/${pid}`);
   };
   let del = (pid) => {
-    axios.delete(`http://localhost:5000/del/${pid}`).then((res) => {
+    axios.delete(`${process.env.REACT_APP_API_URL}/del/${pid}`).then((res) => {
       setF(!f);
     });
   };
@@ -41,7 +41,7 @@ function Pdm() {
   };
   let addComment = (pid) => {
     axios
-      .put(`http://localhost:5000/addcomm`, {
+      .put(`${process.env.REACT_APP_API_URL}/addcomm`, {
         pid: pid,
         txt: acom[pid],
         name: obj.store.name,
@@ -55,7 +55,7 @@ function Pdm() {
   };
   let delcom = (pid, cid) => {
     axios
-      .put("http://localhost:5000/delcom", { pid: pid, cid: cid })
+      .put(`${process.env.REACT_APP_API_URL}/delcom`, { pid: pid, cid: cid })
       .then((res) => {
         setF(!f);
       });
@@ -65,7 +65,7 @@ function Pdm() {
     if (t != undefined) {
       t = JSON.parse(t);
       axios
-        .put("http://localhost:5000/like", { pid: pid, uid: t.uid })
+        .put(`${process.env.REACT_APP_API_URL}/like`, { pid: pid, uid: t.uid })
         .then((res) => {
           setF(!f);
         });
@@ -78,7 +78,7 @@ function Pdm() {
     if (t != undefined) {
       t = JSON.parse(t);
       axios
-        .put("http://localhost:5000/dlike", { pid: pid, uid: t.uid })
+        .put(`${process.env.REACT_APP_API_URL}/dlike`, { pid: pid, uid: t.uid })
         .then((res) => {
           setF(!f);
         });

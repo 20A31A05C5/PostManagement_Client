@@ -26,7 +26,7 @@ function Add(){
          setMsg("Please All Details...")
        }
        else{
-            axios.post("http://localhost:5000/addpost",{...data,"uid":ck.uid,"name":ck.name}).then((res)=>{
+            axios.post(`${process.env.REACT_APP_API_URL}/addpost`,{...data,"uid":ck.uid,"name":ck.name}).then((res)=>{
             setData({"title":"","desc":"","cat":""})
             setMsg(res.data.msg)
             console.log(res.data.msg);

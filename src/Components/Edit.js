@@ -12,14 +12,14 @@ function Edit() {
     setData({...data,[e.target.name]:e.target.value})
   }
   useEffect(()=>{
-      axios.get(`http://localhost:5000/getpost/${pid}`).then((res)=>{
+      axios.get(`${process.env.REACT_APP_API_URL}/getpost/${pid}`).then((res)=>{
         setData(res.data)
         console.log(res.data);
         
       })
   },[])
   let upd=()=>{
-    axios.put("http://localhost:5000/update",data).then((res)=>{
+    axios.put(`${process.env.REACT_APP_API_URL}/update`,data).then((res)=>{
       navigate("/pdm")
     }).catch((error)=>{
       setMsg(error.error)

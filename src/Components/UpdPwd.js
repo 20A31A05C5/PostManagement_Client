@@ -11,7 +11,7 @@ function UpdPwd() {
     setData({...data,[e.target.name]:e.target.value})
   }
   let reset=()=>{
-    axios.put("http://localhost:5000/updpwd",{...data,"uid":uid}).then((res)=>{
+    axios.put(`${process.env.REACT_APP_API_URL}/updpwd`,{...data,"uid":uid}).then((res)=>{
         if(res.data.msg==="Password Reset Done"){
             navigate("/login")
         }

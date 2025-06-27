@@ -18,7 +18,7 @@ function News() {
        obj.updStore(t)
     }
     
-    axios.get("http://localhost:5000/getcat/news").then((res)=>{
+    axios.get(`${process.env.REACT_APP_API_URL}/getcat/news`).then((res)=>{
       setData(res.data)
     })
   },[f])
@@ -26,7 +26,7 @@ function News() {
     let t=Cookies.get("lgc")
     if(t!=undefined){
       t=JSON.parse(t)
-      axios.put("http://localhost:5000/like",{"pid":pid,"uid":t.uid}).then((res)=>{
+      axios.put(`${process.env.REACT_APP_API_URL}/like`,{"pid":pid,"uid":t.uid}).then((res)=>{
         setF(!f)
       })
     }
@@ -38,7 +38,7 @@ function News() {
     let t=Cookies.get("lgc")
     if(t!=undefined){
       t=JSON.parse(t)
-      axios.put("http://localhost:5000/dlike",{"pid":pid,"uid":t.uid}).then((res)=>{
+      axios.put(`${process.env.REACT_APP_API_URL}/dlike`,{"pid":pid,"uid":t.uid}).then((res)=>{
         setF(!f)
       })
     }
@@ -54,14 +54,14 @@ function News() {
     .join(" ");
   }
   let addComment=(pid)=>{
-    axios.put(`http://localhost:5000/addcomm`,{"pid":pid,"txt":acom[pid],"name":obj.store.name,"uid":obj.store.uid}).then((res)=>{
+    axios.put(`${process.env.REACT_APP_API_URL}/addcomm`,{"pid":pid,"txt":acom[pid],"name":obj.store.name,"uid":obj.store.uid}).then((res)=>{
       setAcom({...acom,[pid]:""})
 
       setF(!f)
     })
   }
   let delcom=(pid,cid)=>{
-    axios.put("http://localhost:5000/delcom",{"pid":pid,"cid":cid}).then((res)=>{
+    axios.put(`${process.env.REACT_APP_API_URL}/delcom`,{"pid":pid,"cid":cid}).then((res)=>{
       setF(!f)
     })
   }

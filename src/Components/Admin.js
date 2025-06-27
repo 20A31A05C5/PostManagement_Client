@@ -15,7 +15,7 @@ function Admin() {
     if(x!==undefined){
         // x=JSON.parse(x)
         // obj.updStore(x)
-        axios.get("http://localhost:5000/admin").then((res)=>{ 
+        axios.get(`${process.env.REACT_APP_API_URL}/admin`).then((res)=>{ 
             setData(res.data)
         })
     }
@@ -24,13 +24,13 @@ function Admin() {
     }
   },[f])
   let inspect=(pid)=>{
-    axios.put("http://localhost:5000/inspect",{"_id":pid,"comm":msg[pid]}).then(()=>{
+    axios.put(`${process.env.REACT_APP_API_URL}/inspect`,{"_id":pid,"comm":msg[pid]}).then(()=>{
       setF(!f)
       setMsg({...msg,[pid]:""})
     })
   }
   let accept=(pid)=>{
-    axios.put(`http://localhost:5000/accept/${pid}`).then(()=>{
+    axios.put(`${process.env.REACT_APP_API_URL}/accept/${pid}`).then(()=>{
       setF(!f)
     })
   }

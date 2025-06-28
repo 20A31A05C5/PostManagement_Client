@@ -6,6 +6,7 @@ import Ct from './Ct'
 
 function All() {
   let [data,setData]=useState([])
+  const baseUrl = process.env.REACT_APP_API_URL?.replace(/\/+$/, '');
   let [f,setF]=useState(true)
   let navigate=useNavigate()
   let [cm,setCm]=useState({})
@@ -18,7 +19,7 @@ function All() {
        obj.updStore(t)
     }
     
-    axios.get(`${process.env.REACT_APP_API_URL}/getall`).then((res)=>{
+    axios.get(`${baseUrl}/getall`).then((res)=>{
       setData(res.data)
     })
   },[f])
@@ -26,7 +27,7 @@ function All() {
     let t=Cookies.get("lgc")
     if(t!=undefined){
       t=JSON.parse(t)
-      axios.put(`${process.env.REACT_APP_API_URL}/like`,{"pid":pid,"uid":t.uid}).then((res)=>{
+      axios.put(`${baseUrl}/like`,{"pid":pid,"uid":t.uid}).then((res)=>{
         setF(!f)
       })
     }
@@ -38,7 +39,7 @@ function All() {
     let t=Cookies.get("lgc")
     if(t!=undefined){
       t=JSON.parse(t)
-      axios.put(`${process.env.REACT_APP_API_URL}/dlike`,{"pid":pid,"uid":t.uid}).then((res)=>{
+      axios.put(`${baseUrl}/dlike`,{"pid":pid,"uid":t.uid}).then((res)=>{
         setF(!f)
       })
     }
@@ -54,14 +55,14 @@ function All() {
     .join(" ");
   }
   let addComment=(pid)=>{
-    axios.put(`${process.env.REACT_APP_API_URL}/addcomm`,{"pid":pid,"txt":acom[pid],"name":obj.store.name,"uid":obj.store.uid}).then((res)=>{
+    axios.put(`${baseUrl}/addcomm`,{"pid":pid,"txt":acom[pid],"name":obj.store.name,"uid":obj.store.uid}).then((res)=>{
       setAcom({...acom,[pid]:""})
 
       setF(!f)
     })
   }
   let delcom=(pid,cid)=>{
-    axios.put(`${process.env.REACT_APP_API_URL}/delcom`,{"pid":pid,"cid":cid}).then((res)=>{
+    axios.put(`${baseUrl}/delcom`,{"pid":pid,"cid":cid}).then((res)=>{
       setF(!f)
     })
   }

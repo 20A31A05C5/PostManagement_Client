@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 function Reg() {
   let [data,setData]=useState({"_id":"","name":"","pwd":""})
   let [msg,setMsg]=useState("")
+  let navigate=useNavigate()
   const baseUrl = process.env.REACT_APP_API_URL?.replace(/\/+$/, '');
   let fun=(e)=>{
     setData({...data,[e.target.name]:e.target.value})
@@ -12,6 +14,7 @@ function Reg() {
     axios.post(`${baseUrl}/reg`,data).then((res)=>{
       setMsg(res.data.msg)
       setData({"_id":"","name":"","pwd":""})
+      navigate("/login")
     })
   }
   return (

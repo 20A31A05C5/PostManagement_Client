@@ -5,6 +5,7 @@ import axios from 'axios'
 function Edit() {
   let [data,setData]=useState({"title":"","desc":"","cat":""})
   let [msg,setMsg]=useState("")
+  const baseUrl = process.env.REACT_APP_API_URL?.replace(/\/+$/, '');
   let {pid}=useParams()
   console.log(pid)
   let navigate=useNavigate()
@@ -12,14 +13,14 @@ function Edit() {
     setData({...data,[e.target.name]:e.target.value})
   }
   useEffect(()=>{
-      axios.get(`${process.env.REACT_APP_API_URL}/getpost/${pid}`).then((res)=>{
+      axios.get(`${baseUrl}/getpost/${pid}`).then((res)=>{
         setData(res.data)
         console.log(res.data);
         
       })
   },[])
   let upd=()=>{
-    axios.put(`${process.env.REACT_APP_API_URL}/update`,data).then((res)=>{
+    axios.put(`${baseUrl}/update`,data).then((res)=>{
       navigate("/pdm")
     }).catch((error)=>{
       setMsg(error.error)

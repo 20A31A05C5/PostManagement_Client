@@ -204,8 +204,8 @@ function Pdm() {
               </div>
             )}
             <div>
-              <button onClick={() => edit(post._id)}>Edit</button>
-              <button onClick={() => del(post._id)}>Delete</button>
+              <button className="pdmbtn" onClick={() => edit(post._id)}>Edit</button>
+              <button className="pdmbtn" onClick={() => del(post._id)}>Delete</button>
             </div>
           </div>
         );

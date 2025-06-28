@@ -886,12 +886,12 @@ nav a,nav h2,nav a:hover{
 }
 .pdmbtn{
   width: 14%;
-   padding: 0.5rem;
+   padding: 0.4rem;
   border: none;
-  border-radius: 10px;
+  border-radius: 5px;
   background: rgb(13, 10, 240);
   color: #fcfcfa;
-  font-size: 7px;
+  font-size: 8px;
   font-weight: bold;
   cursor: pointer;
   box-shadow: 0 0 0px rgb(252, 251, 251), 0 0 0px rgb(250, 249, 249);

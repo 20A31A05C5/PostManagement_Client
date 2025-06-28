@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 function Pdm() {
   let obj = useContext(Ct);
   let [data, setData] = useState([]);
+  const baseUrl = process.env.REACT_APP_API_URL?.replace(/\/+$/, '');
   let navigate = useNavigate();
   let [cm, setCm] = useState({});
   let [acom, setAcom] = useState({});
@@ -20,7 +21,7 @@ function Pdm() {
 
       obj.updStore(x);
     }
-    axios.get(`${process.env.REACT_APP_API_URL}/pdm/${obj.store.uid}`).then((res) => {
+    axios.get(`${baseUrl}/pdm/${obj.store.uid}`).then((res) => {
       setData(res.data);
     });
   }, [f]);
@@ -28,7 +29,7 @@ function Pdm() {
     navigate(`/edit/${pid}`);
   };
   let del = (pid) => {
-    axios.delete(`${process.env.REACT_APP_API_URL}/del/${pid}`).then((res) => {
+    axios.delete(`${baseUrl}/del/${pid}`).then((res) => {
       setF(!f);
     });
   };
@@ -41,7 +42,7 @@ function Pdm() {
   };
   let addComment = (pid) => {
     axios
-      .put(`${process.env.REACT_APP_API_URL}/addcomm`, {
+      .put(`${baseUrl}/addcomm`, {
         pid: pid,
         txt: acom[pid],
         name: obj.store.name,
@@ -55,7 +56,7 @@ function Pdm() {
   };
   let delcom = (pid, cid) => {
     axios
-      .put(`${process.env.REACT_APP_API_URL}/delcom`, { pid: pid, cid: cid })
+      .put(`${baseUrl}/delcom`, { pid: pid, cid: cid })
       .then((res) => {
         setF(!f);
       });
@@ -65,7 +66,7 @@ function Pdm() {
     if (t != undefined) {
       t = JSON.parse(t);
       axios
-        .put(`${process.env.REACT_APP_API_URL}/like`, { pid: pid, uid: t.uid })
+        .put(`${baseUrl}/like`, { pid: pid, uid: t.uid })
         .then((res) => {
           setF(!f);
         });
@@ -78,7 +79,7 @@ function Pdm() {
     if (t != undefined) {
       t = JSON.parse(t);
       axios
-        .put(`${process.env.REACT_APP_API_URL}/dlike`, { pid: pid, uid: t.uid })
+        .put(`${baseUrl}/dlike`, { pid: pid, uid: t.uid })
         .then((res) => {
           setF(!f);
         });

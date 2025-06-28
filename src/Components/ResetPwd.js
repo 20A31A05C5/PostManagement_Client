@@ -7,8 +7,9 @@ function ResetPwd() {
    let ir=useRef()
    let navigate=useNavigate()
    let [msg,setMsg]=useState("")
+   const baseUrl = process.env.REACT_APP_API_URL?.replace(/\/+$/, '');
    let sendotp=()=>{
-    axios.get(`${process.env.REACT_APP_API_URL}/getotp/${ir.current.value}`).then((res)=>{
+    axios.get(`${baseUrl}/getotp/${ir.current.value}`).then((res)=>{
         if(res.data.msg=="otp sent"){
             navigate(`/updpwd/${ir.current.value}`)
         }

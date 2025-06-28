@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 function Admin() {
   let [data,setData]=useState([])
   let obj=useContext(Ct)
+  const baseUrl = process.env.REACT_APP_API_URL?.replace(/\/+$/, '');
   let navigate=useNavigate()
   let [f,setF]=useState(true)
   let [msg,setMsg]=useState({})
@@ -15,7 +16,7 @@ function Admin() {
     if(x!==undefined){
         // x=JSON.parse(x)
         // obj.updStore(x)
-        axios.get(`${process.env.REACT_APP_API_URL}/admin`).then((res)=>{ 
+        axios.get(`${baseUrl}/admin`).then((res)=>{ 
             setData(res.data)
         })
     }
@@ -24,13 +25,13 @@ function Admin() {
     }
   },[f])
   let inspect=(pid)=>{
-    axios.put(`${process.env.REACT_APP_API_URL}/inspect`,{"_id":pid,"comm":msg[pid]}).then(()=>{
+    axios.put(`${baseUrl}/inspect`,{"_id":pid,"comm":msg[pid]}).then(()=>{
       setF(!f)
       setMsg({...msg,[pid]:""})
     })
   }
   let accept=(pid)=>{
-    axios.put(`${process.env.REACT_APP_API_URL}/accept/${pid}`).then(()=>{
+    axios.put(`${baseUrl}/accept/${pid}`).then(()=>{
       setF(!f)
     })
   }

@@ -6,6 +6,7 @@ import axios from 'axios'
 function Add(){
   let [data,setData]=useState({"title":"","desc":"","cat":""})
   let [ck,setCk]=useState({"uid":"","name":""})
+  const baseUrl = process.env.REACT_APP_API_URL?.replace(/\/+$/, '');
   let [msg,setMsg]=useState("")
   let navigate=useNavigate()
 
@@ -26,7 +27,7 @@ function Add(){
          setMsg("Please All Details...")
        }
        else{
-            axios.post(`${process.env.REACT_APP_API_URL}/addpost`,{...data,"uid":ck.uid,"name":ck.name}).then((res)=>{
+            axios.post(`${baseUrl}/addpost`,{...data,"uid":ck.uid,"name":ck.name}).then((res)=>{
             setData({"title":"","desc":"","cat":""})
             setMsg(res.data.msg)
             console.log(res.data.msg);

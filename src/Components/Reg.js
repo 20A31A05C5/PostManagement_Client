@@ -11,6 +11,7 @@ function Reg() {
   let reg=()=>{
     axios.post(`${baseUrl}/reg`,data).then((res)=>{
       setMsg(res.data.msg)
+      setData({"_id":"","name":"","pwd":""})
     })
   }
   return (

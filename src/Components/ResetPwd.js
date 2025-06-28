@@ -23,7 +23,7 @@ function ResetPwd() {
         <div className='login'>
             <div>{msg}</div>
             <input type='text' placeholder='Enter Email' ref={ir} ></input>
-            <button onClick={sendotp}>Send Otp</button>
+            <button  className="otp" onClick={sendotp}>Send Otp</button>
         </div>
     </div>
   )

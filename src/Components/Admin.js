@@ -43,11 +43,11 @@ function Admin() {
     .join(" ");
 }
   return (
-    <div className='con'>
+    <div className='admcon'>
       {
         data.map((post)=>{
           return(
-            <div className='card'>
+            <div className='admcard'>
               <h1>{post.title}</h1>
               <p>{toTitleCase(post.desc)}</p>
               <div>

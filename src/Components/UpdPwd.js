@@ -6,12 +6,13 @@ function UpdPwd() {
     let [data,setData]=useState({"pwd":"","otp":""})
   let {uid}=useParams()
   let navigate=useNavigate()
+    const baseUrl = process.env.REACT_APP_API_URL?.replace(/\/+$/, '');
   let [msg,setMsg]=useState("")
   let fun=(e)=>{
     setData({...data,[e.target.name]:e.target.value})
   }
   let reset=()=>{
-    axios.put(`${process.env.REACT_APP_API_URL}/updpwd`,{...data,"uid":uid}).then((res)=>{
+    axios.put(`${baseUrl}/updpwd`,{...data,"uid":uid}).then((res)=>{
         if(res.data.msg==="Password Reset Done"){
             navigate("/login")
         }

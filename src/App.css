@@ -143,6 +143,68 @@ nav a,nav h2,nav a:hover{
   border-top: 1px solid rgb(250, 11, 198);
   padding-top: 0.8rem;
 }
+/*Admin Card*/
+.admcon {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  max-width: 800px;
+   margin: 0 auto;
+  padding-top: 20px;
+
+}
+.admcard {
+ background: linear-gradient(145deg, #53f3d8, #e5f50d);
+  border-radius: 20px;
+  padding: 1.5rem 2rem;
+  color: #2a2f75;
+  animation: cardEnter 0.8s ease forwards;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.admcard:hover {
+  transform: translateY(0px) scale(1.01);
+  box-shadow:
+    0 0 5px rgb(30, 8, 228),
+    inset 0 0 5px rgb(30, 8, 228);
+}
+
+/* Text Styling */
+.admcard h2 {
+  font-size: 1.5rem;
+  color: #0e0d0d;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 5px #00ffffaa;
+}
+.admcard i{
+  font-size: 24px;
+}
+.admcard h2{
+  cursor: pointer;
+}
+
+.admcard p {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #202020;
+  margin: 0.3rem 0;
+  
+}
+
+/* Post Footer Info (name, date, cat) */
+.admcard > div {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.2rem;
+  font-size: 0.9rem;
+  color: #212324;
+  border-top: 1px solid rgb(250, 11, 198);
+  padding-top: 0.8rem;
+}
+
+
 
 /* Entry Animation */
 @keyframes cardEnter {
@@ -181,6 +243,7 @@ input, select {
   padding: 0.8rem;
   border: none;
   outline: none;
+  max-width: 70%;
   background: #fdfdfd;
   color: rgb(23, 24, 24);
   font-size: 1rem;
@@ -195,6 +258,7 @@ input::placeholder {
 
 select {
   background: #faf8f8;
+  width: 100%;
   color: rgb(27, 27, 27);
 }
 
@@ -207,27 +271,73 @@ select option {
 button {
   padding: 0.8rem;
   border: none;
-  width: 30%;
+  border-radius: 10px;
+  width: 50%;
+  background: rgb(13, 10, 240);
+  color: #fcfcfa;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 0px rgb(252, 251, 251), 0 0 0px rgb(250, 249, 249);
+}
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 0px #0ff, 0 0 0px #0ff;
+
+}
+
+/*addcom buttons*/
+.admcard input{
+  padding: 0.8rem;
+  border: none;
+  outline: none;
+  width: 45%;
+  background: #fdfdfd;
+  color: rgb(23, 24, 24);
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.admcard input::placeholder {
+  color: rgb(34, 34, 34);
+  opacity: 0.6;
+}
+
+
+.admcard button {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  width: 15%;
+  background: rgb(13, 10, 240);
+  color: #fcfcfa;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgb(252, 251, 251), 0 0 10px rgb(250, 249, 249);
+}
+.admcard button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 0px #0ff, 0 0 0px #0ff;
+
+}
+.pdmbtn{
+  width: 14%;
+   padding: 0.5rem;
+  border: none;
   border-radius: 10px;
   background: rgb(13, 10, 240);
   color: #fcfcfa;
   font-size: 15px;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 0 10px rgb(252, 251, 251), 0 0 10px rgb(250, 249, 249);
-}
-.login .otp{
-  width: 45%;
-}
-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px #0ff, 0 0 40px #0ff;
-
+  box-shadow: 0 0 0px rgb(252, 251, 251), 0 0 0px rgb(250, 249, 249);
 }
 .comm{
   padding: 0.8rem;
   border: none;
-  min-width: 150px;
+  width: 20%;
   border-radius: 10px;
   background: rgb(20, 80, 243);
   color: #f8f9fa;
@@ -295,14 +405,15 @@ box-shadow: 0 0 0px rgb(252, 251, 251), 0 0 0px rgb(250, 249, 249);
 .commentbox .addcomment{
   display: flex;
   flex-direction: row;
+  width: 60%;
   gap: 15px;
-  margin: 10px;
+  margin:20px;
 }
 .commentbox .addcomment input{
    padding: 0.6rem;
   border: none;
   outline: none;
-  width: 50%;
+  width: 60%;
   background: #fdfdfd;
   color: rgb(23, 24, 24);
   font-size: 0.8rem;
@@ -438,9 +549,55 @@ box-shadow: 0 0 0px rgb(252, 251, 251), 0 0 0px rgb(250, 249, 249);
   font-size: 10px;
 }
 
+.admcard input, select {
+  padding: 0.3rem;
+  width: 50%;
+  border: none;
+  outline: none;
+  background: #fdfdfd;
+  color: rgb(23, 24, 24);
+  font-size: 0.6rem;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.admcard input::placeholder {
+  color: rgb(34, 34, 34);
+  opacity: 0.6;
+}
+
+select {
+  background: #faf8f8;
+  color: rgb(27, 27, 27);
+}
+
+select option {
+  background: #f9faf7;
+  color: rgb(24, 4, 114);
+  font-weight: bold;
+}
+
+.admcard button {
+  padding: 0.3rem;
+  border: none;
+  width: 15%;
+  border-radius: 5px;
+  background: rgb(13, 10, 240);
+  color: #fcfcfa;
+  font-size: 9px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgb(252, 251, 251), 0 0 10px rgb(250, 249, 249);
+}
+.admcard button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #0ff, 0 0 40px #0ff;
+
+}
+
 input, select {
   padding: 0.3rem;
-  width: 100%;
+  width: 80%;
   border: none;
   outline: none;
   background: #fdfdfd;
@@ -469,11 +626,11 @@ select option {
 button {
   padding: 0.3rem;
   border: none;
-  width: 50px;
+  width: 50%;
   border-radius: 5px;
   background: rgb(13, 10, 240);
   color: #fcfcfa;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: bold;
   cursor: pointer;
   box-shadow: 0 0 10px rgb(252, 251, 251), 0 0 10px rgb(250, 249, 249);
@@ -490,7 +647,7 @@ button:hover {
   border-radius: 10px;
   background: rgb(20, 80, 243);
   color: #f8f9fa;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: bold;
   cursor: pointer;
    box-shadow: 0 0 0px rgb(252, 251, 251), 0 0 0px rgb(250, 249, 249);
@@ -514,7 +671,7 @@ box-shadow: 0 0 0px rgb(252, 251, 251), 0 0 0px rgb(250, 249, 249);
   margin-bottom: 0.3rem;
 }
 .commentbox table{
-  width: 80%;
+  width: 70%;
   text-align: left;
 }
 .commentbox .comment{
@@ -527,22 +684,22 @@ box-shadow: 0 0 0px rgb(252, 251, 251), 0 0 0px rgb(250, 249, 249);
  margin:5px;
 }
 .commentbox .comment .title{
-  width: 40%;
-  font-size: 13px;
+  width: 30%;
+  font-size: 10px;
   text-align: left;
   color: #1102e2;
   font-weight: bold;
 }
 .commentbox .comment .text{
   width: 60%;
-  font-size: 11px;
+  font-size: 8px;
   color: #1b1b1b;
   text-align: left;
   font-weight: bold;
 }
 .commentbox .comment .trash i{
   width: 10%;
-  font-size: 13px;
+  font-size: 8px;
   color: #1b1b1b;
   text-align: center;
 }
@@ -554,18 +711,19 @@ box-shadow: 0 0 0px rgb(252, 251, 251), 0 0 0px rgb(250, 249, 249);
 .commentbox .addcomment{
   display: flex;
   flex-direction: row;
+  width: 80%;
   gap: 10px;
   margin: 5px;
 }
 .commentbox .addcomment input{
    padding: 0.2rem;
-   height: 20px;
+   height: 12px;
   border: none;
   outline: none;
   width: 60%;
   background: #fdfdfd;
   color: rgb(23, 24, 24);
-  font-size: 0.4rem;
+  font-size: 0.5rem;
   font-weight: bold;
   border-radius: 5px;
 }
@@ -576,9 +734,9 @@ box-shadow: 0 0 0px rgb(252, 251, 251), 0 0 0px rgb(250, 249, 249);
   width: 30%;
   background: #1102e2;
   color: rgb(247, 248, 248);
-  font-size: 0.4rem;
+  font-size: 0.5rem;
   font-weight: bold;
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: 0 0 0px rgb(252, 251, 251), 0 0 0px rgb(250, 249, 249);
 }
 
@@ -664,6 +822,80 @@ nav a,nav h2,nav a:hover{
      text-shadow: 0 0 3px #00ffff, 0 0 10px #00ffff88;
 
 }
+/*Admin Card*/
+.admcon {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 95%;
+  max-width: 800px;
+   margin: 0 auto;
+  padding-top: 20px;
+
+}
+.admcard {
+ background: linear-gradient(145deg, #53f3d8, #e5f50d);
+  border-radius: 20px;
+  padding: 1.5rem 2rem;
+  color: #2a2f75;
+  animation: cardEnter 0.8s ease forwards;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.admcard:hover {
+  transform: translateY(0px) scale(1.01);
+  box-shadow:
+    0 0 5px rgb(30, 8, 228),
+    inset 0 0 5px rgb(30, 8, 228);
+}
+
+/* Text Styling */
+.admcard h1 {
+  font-size: 1rem;
+  color: #0e0d0d;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 5px #00ffffaa;
+}
+.admcard i{
+  font-size: 13px;
+}
+.admcard h2{
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.admcard p {
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: #202020;
+  margin: 0.3rem 0;
+  
+}
+
+/* Post Footer Info (name, date, cat) */
+.admcard > div {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.2rem;
+  font-size: 1rem;
+  color: #212324;
+  border-top: 1px solid rgb(250, 11, 198);
+  padding-top: 0.8rem;
+}
+.pdmbtn{
+  width: 14%;
+   padding: 0.5rem;
+  border: none;
+  border-radius: 10px;
+  background: rgb(13, 10, 240);
+  color: #fcfcfa;
+  font-size: 7px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 0px rgb(252, 251, 251), 0 0 0px rgb(250, 249, 249);
+}
+
 
 
 }

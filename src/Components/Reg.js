@@ -4,11 +4,12 @@ import axios from 'axios'
 function Reg() {
   let [data,setData]=useState({"_id":"","name":"","pwd":""})
   let [msg,setMsg]=useState("")
+  const baseUrl = process.env.REACT_APP_API_URL?.replace(/\/+$/, '');
   let fun=(e)=>{
     setData({...data,[e.target.name]:e.target.value})
   }
   let reg=()=>{
-    axios.post(`${process.env.REACT_APP_API_URL}/reg`,data).then((res)=>{
+    axios.post(`${baseUrl}/reg`,data).then((res)=>{
       setMsg(res.data.msg)
     })
   }

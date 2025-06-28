@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
 function Login() {
   let [data,setData]=useState({"_id":"","pwd":""})
+  const baseUrl = process.env.REACT_APP_API_URL?.replace(/\/+$/, '');
   let [msg,setMsg]=useState("")
   let obj=useContext(Ct)
   let navigate=useNavigate()
@@ -13,7 +14,7 @@ function Login() {
     setData({...data,[e.target.name]:e.target.value})
   }
   let login=()=>{
-    axios.post(`${process.env.REACT_APP_API_URL}/login`,data).then((res)=>{
+    axios.post(`${baseUrl}/login`,data).then((res)=>{
       if(res.data.token!==undefined){
         Cookies.set("lgc",JSON.stringify(res.data),{"expires":2})
         obj.updStore(res.data)
